@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,298 +6,273 @@
     <title>Pulse Physical Therapy | Performance & Rehab</title>
     
     <meta name="description" content="Pulse Physical Therapy - Specialized rehab and movement performance for climbers, runners, and mountain athletes in Seattle.">
-    <meta name="keywords" content="Pulse Physical Therapy, climbing physical therapy seattle, running rehab seattle, bouldering injuries, mountain athlete performance, DPT seattle, Stephen Kiraly">
+    <meta name="keywords" content="Pulse Physical Therapy, climbing physical therapy seattle, running rehab seattle, bouldering injuries, mountain athlete performance, DPT student seattle, Stephen Kiraly">
     <meta name="author" content="Stephen Kiraly">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --accent: #C5A059; --dark: #121212; --light: #ffffff; --gray: #f9f9f9; }
+        /* Updated to Deep Slate / Petroleum Palette */
+        :root { 
+            --accent: #1A3B47; 
+            --dark: #121212; 
+            --light: #ffffff; 
+            --gray: #f9f9f9; 
+            --text-gray: #555;
+        }
+
         * { box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; margin: 0; color: var(--dark); line-height: 1.6; background: var(--light); scroll-behavior: smooth; }
         
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 8%; background: #fff; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #eee; }
-        .brand { display: flex; align-items: center; text-decoration: none; gap: 12px; }
-        .brand-text { display: flex; flex-direction: column; line-height: 1; }
-        .brand-text .pulse { color: var(--dark); font-weight: 900; font-size: 1.5rem; text-transform: uppercase; letter-spacing: -1px; }
-        .brand-text .pt { color: var(--accent); font-weight: 900; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; margin-top: -2px; }
-        .logo-img { height: 45px; width: auto; }
+        /* Navigation - Logo Only */
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 25px 8%; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+            transition: all 0.4s ease; 
+        }
+
+        nav.scrolled { 
+            background: rgba(255, 255, 255, 0.98); 
+            padding: 15px 8%; 
+            border-bottom: 1px solid #eee; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .brand { display: flex; align-items: center; text-decoration: none; }
+        
+        .logo-img { 
+            height: 60px; 
+            width: auto; 
+            transition: 0.4s;
+            filter: brightness(0) invert(1); /* Keeps logo white on top of background.jpg */
+        }
+
+        nav.scrolled .logo-img { 
+            height: 50px; 
+            filter: none; /* Returns logo to its original Slate/Red colors on white bar */
+        }
 
         .nav-links { display: flex; gap: 10px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; padding: 10px 15px; transition: 0.3s; border-radius: 2px; }
-        .nav-links a:hover { background: var(--accent); color: var(--dark); }
+        .nav-links a { text-decoration: none; color: #fff; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; padding: 10px 15px; transition: 0.3s; }
+        nav.scrolled .nav-links a { color: var(--dark); }
+        .nav-links a:hover { color: var(--accent); }
 
-        .btn-nav { border: 2px solid var(--dark); background: transparent; color: var(--dark); text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; padding: 10px 15px; transition: 0.3s; border-radius: 2px; display: inline-block; }
-        .btn-main { background: var(--dark); color: #fff; padding: 12px 28px; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; transition: 0.3s; border-radius: 2px; border: none; display: inline-block; }
-        .btn-main:hover, .btn-nav:hover { background: var(--accent); color: var(--dark); border-color: var(--accent); cursor: pointer; }
+        .btn-nav { border: 2px solid #fff; background: transparent; color: #fff; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; padding: 10px 15px; transition: 0.3s; border-radius: 2px; }
+        nav.scrolled .btn-nav { border-color: var(--accent); color: var(--accent); }
+        .btn-nav:hover { background: var(--accent); color: #fff !important; border-color: var(--accent); }
 
-        .hero { padding: 100px 8%; background: var(--light); border-bottom: 1px solid #eee; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
-        .hero-label { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; margin-bottom: 20px; display: block; }
-        .hero h1 { font-size: clamp(3rem, 8vw, 5rem); line-height: 0.9; margin: 0; font-weight: 900; letter-spacing: -3px; text-transform: uppercase; }
-        .hero p { font-size: 1.2rem; margin: 30px 0; color: #444; max-width: 600px; }
-        .hero-img-main { width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: 0.5s; }
-        .hero-img-main:hover { transform: scale(1.02); }
+        /* --- PARALLAX HERO SECTION --- */
+        .parallax-hero {
+            position: relative;
+            height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('background.jpg');
+            background-attachment: fixed;
+            background-position: center top; 
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 8%;
+        }
 
-        .about-me { padding: 100px 8%; background: var(--gray); display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-        .about-me h2 { font-size: 2.5rem; text-transform: uppercase; font-weight: 900; margin-top: 0; }
-        .profile-img { width: 100%; max-width: 450px; height: auto; border-radius: 4px; border: 1px solid #ddd; }
+        .hero-content h1 { font-size: clamp(3.5rem, 12vw, 7rem); line-height: 0.85; margin: 0; font-weight: 900; letter-spacing: -4px; text-transform: uppercase; }
+        .hero-content p { font-size: 1.4rem; margin: 25px auto; max-width: 700px; }
+        .hero-label { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 5px; font-size: 0.9rem; margin-bottom: 15px; display: block; filter: brightness(1.5); }
+
+        .btn-main { background: var(--accent); color: #fff; padding: 20px 45px; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; transition: 0.3s; border-radius: 2px; display: inline-block; border: none; cursor: pointer; }
+        .btn-main:hover { filter: brightness(1.2); }
+
+        /* Main Content Material */
+        .main-content {
+            position: relative;
+            z-index: 2;
+            background: var(--light);
+            box-shadow: 0 -30px 60px rgba(0,0,0,0.3);
+        }
+
+        .section-padding { padding: 120px 8%; }
         
-        .services { padding: 100px 8%; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .card { background: #fff; padding: 35px; border: 1px solid #eee; transition: all 0.3s ease; display: flex; flex-direction: column; cursor: default; }
-        .card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
-        .card h3 { font-size: 1.1rem; text-transform: uppercase; margin-top: 0; min-height: 3rem; }
-        .card p { font-size: 0.9rem; flex-grow: 1; margin-bottom: 20px; color: #666; }
-        .price { font-weight: 900; color: var(--accent); display: block; font-size: 1.2rem; }
-        .duration { font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: #bbb; margin-top: 5px; }
+        .about-me { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; background: var(--gray); }
+        .about-me h2 { font-size: 3rem; text-transform: uppercase; font-weight: 900; margin-top: 0; color: var(--accent); }
+        .profile-img { width: 100%; max-width: 480px; height: auto; border-radius: 4px; border: 1px solid #ddd; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background: #fff; padding: 40px; border: 1px solid #eee; transition: all 0.3s ease; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .card h3 { font-size: 1.2rem; text-transform: uppercase; margin-top: 0; margin-bottom: 15px; min-height: 3rem; color: var(--accent); }
+        .card p { font-size: 0.95rem; color: var(--text-gray); flex-grow: 1; margin-bottom: 25px; }
+        .price { font-weight: 900; color: var(--accent); font-size: 1.4rem; display: block; }
+        .duration { font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: #bbb; }
 
-        .testimonials { padding: 100px 8%; background: var(--dark); color: #fff; position: relative; overflow: hidden; }
-        .testimonials h2 { font-size: 2.5rem; text-transform: uppercase; font-weight: 900; text-align: center; margin-bottom: 40px; color: var(--accent); }
-        .slider-wrapper { overflow: hidden; width: 100%; }
-        .slider-container { display: flex; transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .testimonial-item { min-width: 100%; padding: 0 15%; text-align: center; box-sizing: border-box; }
-        .testimonial-text { font-size: 1.5rem; font-style: italic; margin-bottom: 20px; line-height: 1.4; color: #eee; }
-        .testimonial-author { font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); }
+        .testimonials { background: var(--accent); color: #fff; text-align: center; }
+        .testimonials h2 { font-size: 2.5rem; text-transform: uppercase; color: #fff; margin-bottom: 40px; opacity: 0.8; }
+        .testimonial-text { font-size: 1.8rem; font-style: italic; max-width: 900px; margin: 0 auto 20px; line-height: 1.4; }
 
-        .slider-btn { position: absolute; top: 55%; transform: translateY(-50%); background: rgba(255,255,255,0.05); color: white; border: none; padding: 20px; cursor: pointer; font-size: 2rem; transition: 0.3s; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10; opacity: 0; }
-        .testimonials:hover .slider-btn { opacity: 1; }
-        .slider-btn:hover { background: var(--accent); color: var(--dark); }
-        .prev { left: 5%; }
-        .next { right: 5%; }
-
-        .faq { padding: 100px 8%; background: #fff; border-top: 1px solid #eee; }
-        .faq h2 { font-size: 2.5rem; text-transform: uppercase; font-weight: 900; text-align: center; margin-bottom: 40px; }
         .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item { border-bottom: 1px solid #eee; }
-        .faq-question { width: 100%; padding: 25px 0; background: none; border: none; text-align: left; font-size: 1rem; font-weight: 700; text-transform: uppercase; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: all 0.4s cubic-bezier(0, 1, 0, 1); font-size: 1rem; color: #555; }
-        .faq-answer p { padding-bottom: 20px; margin: 0; }
-        .faq-question::after { content: '+'; font-size: 1.2rem; color: var(--accent); transition: transform 0.3s; }
+        .faq-question { width: 100%; padding: 30px 0; background: none; border: none; text-align: left; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--accent); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: 0.4s ease; color: var(--text-gray); }
+        .faq-item.active .faq-answer { max-height: 600px; padding-bottom: 30px; }
+        .faq-question::after { content: '+'; font-size: 1.5rem; transition: 0.3s; }
         .faq-item.active .faq-question::after { transform: rotate(45deg); }
-        .faq-item.active .faq-answer { max-height: 1000px; transition: all 0.4s cubic-bezier(1, 0, 1, 0); }
 
-        .contact { padding: 100px 8%; text-align: center; background: var(--gray); }
-        .contact h2 { font-size: 2.5rem; text-transform: uppercase; font-weight: 900; margin-bottom: 10px; }
-        form { max-width: 600px; margin: 40px auto; background: #fff; padding: 40px; border: 1px solid #eee; border-radius: 4px; text-align: left; }
-        input, textarea, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 2px; font-family: inherit; margin-bottom: 20px; background: #fff; font-size: 1rem; }
-        label { display: block; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; font-size: 0.75rem; color: #333; }
-        #email-field, #phone-field { display: none; }
+        .contact { background: var(--gray); text-align: center; }
+        form { max-width: 600px; margin: 50px auto; background: #fff; padding: 50px; text-align: left; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        label { display: block; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 8px; color: var(--accent); }
+        input, select, textarea { width: 100%; padding: 15px; margin-bottom: 25px; border: 1px solid #ddd; border-radius: 2px; font-family: inherit; font-size: 1rem; }
 
-        footer { padding: 50px 8%; background: #fff; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
-        .footer-info { font-size: 0.8rem; color: #999; }
-        .footer-social a { color: var(--dark); text-decoration: none; display: flex; align-items: center; gap: 8px; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; transition: 0.3s; }
-        .footer-social img { width: 20px; height: 20px; }
+        footer { padding: 60px 8%; background: #fff; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .footer-social a { text-decoration: none; color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
 
         @media (max-width: 900px) {
-            .hero { grid-template-columns: 1fr; text-align: center; padding: 60px 8%; }
-            .hero p { margin: 20px auto; }
+            .parallax-hero { background-attachment: scroll; height: 80vh; }
             .about-me { grid-template-columns: 1fr; }
             .nav-links { display: none; }
-            .testimonial-item { padding: 0 5%; }
-            footer { flex-direction: column; gap: 20px; text-align: center; }
+            footer { flex-direction: column; gap: 30px; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
+    <nav id="navbar">
         <a href="index.html" class="brand">
-            <div class="brand-text">
-                <span class="pulse">Pulse</span>
-                <span class="pt">Physical Therapy</span>
-            </div>
-            <img src="logo.png" alt="Pulse PT Logo" class="logo-img">
+            <img src="logo.png" alt="Pulse Physical Therapy Logo" class="logo-img">
         </a>
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#services">Services</a>
-            <a href="#testimonials">Reviews</a>
             <a href="#faq">FAQ</a>
-            <a href="#contact">Contact</a>
             <a href="#contact" class="btn-nav">Book Now</a>
         </div>
     </nav>
 
-    <header class="hero">
-        <div>
+    <header class="parallax-hero">
+        <div class="hero-content">
             <span class="hero-label">Seattle, WA</span>
             <h1>FIND YOUR<br>RHYTHM.</h1>
-            <p>Expert movement care for climbers, runners, and mountain athletes. Specialized rehab from a Doctor of Physical Therapy.</p>
-            <a href="#contact" class="btn-main" style="padding: 18px 40px;">Start Your Intake</a>
-        </div>
-        <div>
-            <img src="IMG_8270.JPG" alt="Athletic Performance" class="hero-img-main">
+            <p>Expert movement care for climbers and mountain athletes. Specialized rehab to get you back to the crux.</p>
+            <a href="#contact" class="btn-main">Start Your Intake</a>
         </div>
     </header>
 
-    <section id="about" class="about-me">
-        <div>
-            <h2>About Pulse</h2>
-            <p>I am a Doctor of Physical Therapy with a strong interest in both orthopedic and sports rehabilitation. My clinical focus is on helping athletes navigate the specific physical demands of climbing and mountain sports.</p>
-            <p>As a collaborator with The Climbing Doctor, I help produce prehab content for a global community of climbers. Based in Seattle, my goal is to empower athletes through specific loading protocols and movement education to ensure they don't just recover, but improve.</p>
-        </div>
-        <div>
-            <img src="IMG_1705.jpeg" alt="Stephen Kiraly" class="profile-img">
-        </div>
-    </section>
+    <div class="main-content">
+        <section id="about" class="section-padding about-me">
+            <div>
+                <h2>The Pulse Beta</h2>
+                <p>I am a third-year Doctor of Physical Therapy (DPT) student at UNLV and a collaborator with <strong>The Climbing Doctor</strong>. My approach combines evidence-based loading with a deep understanding of climbing and mountain sport biomechanics.</p>
+                <p>Based in Seattle, I focus on empowering athletes through movement education to ensure they don't just recover, but reach a new baseline of performance.</p>
+            </div>
+            <div>
+                <img src="IMG_1705.jpeg" alt="Stephen Kiraly" class="profile-img">
+            </div>
+        </section>
 
-    <section id="services" class="services">
-        <div class="grid">
-            <div class="card">
-                <h3>Discovery Call</h3>
-                <p>A brief 1:1 screen to discuss your goals and ensure that physical therapy approach is the right fit.</p>
-                <span class="price">FREE</span>
-                <span class="duration">15 Minutes</span>
-            </div>
-            <div class="card">
-                <h3>Initial Evaluation</h3>
-                <p>Complete assessment and movement analysis. We identify the crux and build your roadmap to recovery.</p>
-                <span class="price">$160</span>
-                <span class="duration">60 Minutes</span>
-            </div>
-            <div class="card">
-                <h3>Full Session</h3>
-                <p>Follow-up sessions focused on progressive loading, performance metrics, and long-term resilience.</p>
-                <span class="price">$140</span>
-                <span class="duration">60 Minutes</span>
-            </div>
-            <div class="card">
-                <h3>Half Session</h3>
-                <p>Targeted follow-up for specific troubleshooting or check-ins on your current protocol.</p>
-                <span class="price">$70</span>
-                <span class="duration">30 Minutes</span>
-            </div>
-            <div class="card">
-                <h3>The Send Pack</h3>
-                <p>The ultimate support. Monthly check-ins for anything related to training, prehab, or injury management.</p>
-                <span class="price">Customizable</span>
-                <span class="duration">Monthly Support</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonials" class="testimonials">
-        <h2>Client Reviews</h2>
-        <button class="slider-btn prev" onclick="moveSlide(-1)" aria-label="Previous Review">&#10094;</button>
-        <div class="slider-wrapper">
-            <div class="slider-container" id="slider">
-                <div class="testimonial-item">
-                    <p class="testimonial-text">"Stephen's understanding of ankle biomechanics was a game changer. I was back to running much sooner than I had ever hoped for!"</p>
-                    <p class="testimonial-author">— Sophia B.</p>
+        <section id="services" class="section-padding services">
+            <div class="services-grid">
+                <div class="card">
+                    <h3>Discovery Call</h3>
+                    <p>A brief 1:1 screen to discuss your project and ensure this specialized approach is the right fit.</p>
+                    <span class="price">FREE</span>
+                    <span class="duration">15 Minutes</span>
                 </div>
-                <div class="testimonial-item">
-                    <p class="testimonial-text">"Finally, a provider who understands the specific demands of bouldering. The loading protocols were exactly what I needed."</p>
-                    <p class="testimonial-author">— Client Result</p>
+                <div class="card">
+                    <h3>Initial Evaluation</h3>
+                    <p>Complete assessment and movement analysis. We identify the crux and build your roadmap to recovery.</p>
+                    <span class="price">$160</span>
+                    <span class="duration">60 Minutes</span>
+                </div>
+                <div class="card">
+                    <h3>Full Session</h3>
+                    <p>Comprehensive follow-up sessions focused on progressive loading and performance metrics.</p>
+                    <span class="price">$140</span>
+                    <span class="duration">45-60 Minutes</span>
+                </div>
+                <div class="card">
+                    <h3>Half Session</h3>
+                    <p>Targeted follow-up for specific troubleshooting or check-ins on your current protocol.</p>
+                    <span class="price">$70</span>
+                    <span class="duration">30 Minutes</span>
+                </div>
+                <div class="card">
+                    <h3>The Send Pack</h3>
+                    <p>The ultimate support. Monthly check-ins for training, prehab, or injury management.</p>
+                    <span class="price">Customizable</span>
+                    <span class="duration">Monthly Support</span>
                 </div>
             </div>
-        </div>
-        <button class="slider-btn next" onclick="moveSlide(1)" aria-label="Next Review">&#10095;</button>
-    </section>
+        </section>
 
-    <section id="faq" class="faq">
-        <h2>FAQ</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <button class="faq-question">Why choose Pulse Physical Therapy?</button>
-                <div class="faq-answer">
-                    <p>Standard physical therapy often lacks sport-specific knowledge. At Pulse, we focus on the "beta" of your injury. Whether it's a pulley strain or a trail running setback, we use evidence-based protocols designed for your specific sport.</p>
+        <section id="testimonials" class="section-padding testimonials">
+            <h2>Reviews</h2>
+            <p class="testimonial-text">"Stephen's understanding of ankle biomechanics was a game changer. I was back to running much sooner than I had ever hoped for!"</p>
+            <p>— Sophia B.</p>
+        </section>
+
+        <section id="faq" class="section-padding faq">
+            <div class="faq-container">
+                <h2>FAQ</h2>
+                <div class="faq-item">
+                    <button class="faq-question">Why choose Pulse Physical Therapy?</button>
+                    <div class="faq-answer">
+                        <p>Standard PT often lacks sport-specific knowledge. We focus on evidence-based protocols designed for your specific "project."</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Do you take insurance?</button>
+                    <div class="faq-answer">
+                        <p>Pulse is out-of-network. We provide superbills for you to submit for potential reimbursement.</p>
+                    </div>
                 </div>
             </div>
-            <div class="faq-item">
-                <button class="faq-question">Do you take insurance?</button>
-                <div class="faq-answer">
-                    <p>Pulse Physical Therapy is an out-of-network provider. We accept Credit, Debit, Venmo, and Zelle.</p>
-                    <p>We can provide a superbill (itemized receipt) that you may submit to your insurance company for potential out-of-network reimbursement.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">What will my evaluation look like?</button>
-                <div class="faq-answer">
-                    <p>We perform a deep dive into your injury history, athletic goals, and sport-specific strength testing. By the end of the hour, you’ll have a clear understanding of your issue and a personalized roadmap to return to performance.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">Do I have to be a climber?</button>
-                <div class="faq-answer">
-                    <p>Not at all. While climbing is a specialty, we work with anyone looking to optimize their movement—from ultramarathon runners to weekend hikers.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact" class="contact">
-        <h2>Start Your Rehab</h2>
-        <p>Fill out the intake below and I will reach out within 24 hours.</p>
-        <form action="https://formspree.io/f/maqdobwz" method="POST">
-            <label>Full Name</label>
-            <input type="text" name="name" required placeholder="Full Name">
-            
-            <label>Preferred Contact Method</label>
-            <select name="contact_method" id="contact_method" required onchange="toggleContactFields()">
-                <option value="" disabled selected>Select an option</option>
-                <option value="Email">Email</option>
-                <option value="Phone">Phone Call / Text</option>
-            </select>
+        <section id="contact" class="section-padding contact">
+            <h2>Start Your Project</h2>
+            <form action="https://formspree.io/f/maqdobwz" method="POST">
+                <label>Full Name</label>
+                <input type="text" name="name" required placeholder="Full Name">
+                <label>Preferred Contact Method</label>
+                <select name="contact_method">
+                    <option>Email</option>
+                    <option>Phone Call / Text</option>
+                </select>
+                <label>Current Goals / Symptoms</label>
+                <textarea name="goal" rows="4" required placeholder="What are you working through?"></textarea>
+                <button type="submit" class="btn-main" style="width: 100%;">Send Inquiry</button>
+            </form>
+        </section>
 
-            <div id="email-field">
-                <label>Email Address</label>
-                <input type="email" name="_replyto" placeholder="Email Address">
+        <footer>
+            <div class="footer-info">
+                &copy; 2026 Pulse Physical Therapy<br>
+                Seattle, WA
             </div>
-
-            <div id="phone-field">
-                <label>Phone Number</label>
-                <input type="tel" name="phone" placeholder="(555) 555-5555">
+            <div class="footer-social">
+                <a href="https://instagram.com/zoliclimbs" target="_blank">@zoliclimbs</a>
             </div>
-
-            <label>Current Symptoms/Goals</label>
-            <textarea name="symptoms" rows="4" required placeholder="What are you working through?"></textarea>
-            
-            <label>Session Preference</label>
-            <select name="preference" required>
-                <option value="" disabled selected>Select an option</option>
-                <option value="Online">Online / Remote</option>
-                <option value="In-person: Fremont SBP">In-person: Fremont SBP</option>
-                <option value="In-person: University District SBP">In-person: University District SBP</option>
-            </select>
-            
-            <button type="submit" class="btn-main" style="width: 100%;">Send Inquiry</button>
-        </form>
-    </section>
-
-    <footer>
-        <div class="footer-info">
-            &copy; 2026 Pulse Physical Therapy | Stephen Kiraly, DPT <br>
-            Seattle, Washington.
-        </div>
-        <div class="footer-social">
-            <a href="https://instagram.com/zoliclimbs" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-                @zoliclimbs
-            </a>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <script>
-        function toggleContactFields() {
-            const method = document.getElementById('contact_method').value;
-            const emailField = document.getElementById('email-field');
-            const phoneField = document.getElementById('phone-field');
-            if (method === 'Email') {
-                emailField.style.display = 'block';
-                phoneField.style.display = 'none';
-            } else if (method === 'Phone') {
-                emailField.style.display = 'none';
-                phoneField.style.display = 'block';
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 80) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
             }
-        }
+        });
 
-        let currentSlide = 0;
-        function moveSlide(direction) {
-            const slider = document.getElementById('slider');
-            const totalSlides = document.querySelectorAll('.testimonial-item').length;
-            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-        }
-
+        // FAQ Toggle
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const faqItem = button.parentElement;
@@ -310,4 +284,3 @@
     </script>
 </body>
 </html>
-```
