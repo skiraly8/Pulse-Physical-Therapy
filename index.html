@@ -100,11 +100,20 @@
         .testimonial-text { font-size: 1.5rem; font-style: italic; margin-bottom: 20px; line-height: 1.4; color: #eee; }
         .testimonial-author { font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); }
 
-        .slider-btn { position: absolute; top: 45%; transform: translateY(-50%); background: rgba(255,255,255,0.05); color: white; border: none; padding: 20px; cursor: pointer; font-size: 2rem; transition: 0.3s; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10; opacity: 0; }
+        .slider-btn { position: absolute; top: 40%; transform: translateY(-50%); background: rgba(255,255,255,0.05); color: white; border: none; padding: 20px; cursor: pointer; font-size: 2rem; transition: 0.3s; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10; opacity: 0; }
         .testimonials:hover .slider-btn { opacity: 1; }
         .slider-btn:hover { background: var(--accent); color: var(--dark); }
         .prev { left: 5%; }
         .next { right: 5%; }
+
+        /* Review Form Styling */
+        .toggle-review-btn { display: inline-block; color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; text-decoration: none; margin-top: 20px; transition: 0.3s; cursor: pointer; border-bottom: 1px solid transparent; }
+        .toggle-review-btn:hover { border-bottom-color: var(--accent); }
+        .review-form-container { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; max-width: 600px; margin: 0 auto; text-align: left; }
+        .review-form-container.open { max-height: 800px; transition: max-height 0.5s ease-in; }
+        .review-form { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 30px; margin-top: 30px; border-radius: 4px; color: #fff; }
+        .review-form label { color: #fff; display: block; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; font-size: 0.75rem; }
+        .review-form input, .review-form textarea { background: rgba(255, 255, 255, 0.9); color: var(--dark); border: none; width: 100%; padding: 12px; border-radius: 2px; margin-bottom: 20px; font-family: inherit; font-size: 1rem; }
 
         .faq { padding: 100px 8%; background: #fff; border-top: 1px solid #eee; position: relative; z-index: 2; }
         .faq h2 { font-size: 2.5rem; text-transform: uppercase; font-weight: 900; text-align: center; margin-bottom: 40px; }
@@ -247,8 +256,26 @@
         </div>
         <button class="slider-btn next" onclick="moveSlide(1)" aria-label="Next Review">&#10095;</button>
         
-        <div style="margin-top: 20px;">
-            <a href="#" target="_blank" class="btn-main" style="background: var(--accent); border: none;">Leave a Google Review</a>
+        <!-- Option 2: Expandable Review Submission Form -->
+        <div>
+            <span class="toggle-review-btn" onclick="toggleReviewForm()">Submit Your Success Story</span>
+        </div>
+
+        <div id="review-form-container" class="review-form-container">
+            <form action="https://formspree.io/f/maqdobwz" method="POST" class="review-form">
+                <input type="hidden" name="_subject" value="New Website Testimonial Submission!">
+                
+                <label>Your Name</label>
+                <input type="text" name="client_name" required placeholder="e.g., Alex H.">
+                
+                <label>Your Sport / Discipline</label>
+                <input type="text" name="client_sport" required placeholder="e.g., Bouldering, Trail Running">
+                
+                <label>Your Experience / Review</label>
+                <textarea name="client_testimonial" rows="4" required placeholder="How did Pulse PT help your project?"></textarea>
+                
+                <button type="submit" class="btn-main" style="width: 100%; background: var(--accent); border: none; color: var(--dark);">Submit Testimonial</button>
+            </form>
         </div>
     </section>
 
@@ -347,7 +374,6 @@
 
     <footer>
         <div class="footer-info">
-            <!-- Updated Name Credentials Below -->
             &copy; 2026 Pulse Physical Therapy | Stephen Kiraly, PT, DPT<br>
             Seattle, Washington.
         </div>
@@ -371,6 +397,11 @@
                 emailField.style.display = 'none';
                 phoneField.style.display = 'block';
             }
+        }
+
+        function toggleReviewForm() {
+            const container = document.getElementById('review-form-container');
+            container.classList.toggle('open');
         }
 
         let currentSlide = 0;
