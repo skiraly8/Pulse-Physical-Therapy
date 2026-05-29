@@ -106,9 +106,10 @@
         .prev { left: 5%; }
         .next { right: 5%; }
 
-        /* Review Form Styling */
-        .toggle-review-btn { display: inline-block; color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; text-decoration: none; margin-top: 20px; transition: 0.3s; cursor: pointer; border-bottom: 1px solid transparent; }
-        .toggle-review-btn:hover { border-bottom-color: var(--accent); }
+        /* Updated Review Button & Form Styling */
+        .toggle-review-btn { display: inline-block; border: 2px solid #fff; background: transparent; color: #fff; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; padding: 12px 28px; transition: 0.3s; border-radius: 2px; margin-top: 20px; cursor: pointer; letter-spacing: 1px; }
+        .toggle-review-btn:hover { background: var(--accent); color: var(--dark); border-color: var(--accent); }
+        
         .review-form-container { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; max-width: 600px; margin: 0 auto; text-align: left; }
         .review-form-container.open { max-height: 800px; transition: max-height 0.5s ease-in; }
         .review-form { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 30px; margin-top: 30px; border-radius: 4px; color: #fff; }
@@ -190,9 +191,9 @@
         <div>
             <h2>About Me</h2>
             <h3 class="about-subtitle">Stephen Kiraly, PT, DPT</h3>
-            <p>I am a Doctor of Physical Therapy with a strong interest in both orthopedic and sports rehabilitation, particularly with a focus on climbing injuries. I have a passion to get my patients back to doing what they love!</p>
+            <p>Hey! My name is Stephen and I am a Doctor of Physical Therapy. I have a passion to get my patients back to doing what they love. Whether that is climbing, running, hiking, or walking around the block, I'm here for you! </p>
             <p>I am a collaborator with The Climbing Doctor, where I help produce rehab and prehab content for the @theclimbingdoctor Instagram community. My work includes a featured article on hypermobility for the Climbing Doctor website and a guest appearance on his podcast, discussing specialized strategies for climbers.</p>
-            <p>Based in Seattle, I focus on empowering athletes through specific loading protocols and movement education to ensure they don't just recover, but improve.</p>
+            <p>Based in Seattle, I focus on empowering individuals through specific loading protocols and movement education to ensure they don't just recover, but improve.</p>
             <p>Outside of physical therapy, I am an avid trail runner, climber, soccer player, cyclist, snowboarder, traveler, backpacker, and enjoy all things outdoors.</p>
         </div>
         <div>
@@ -256,9 +257,9 @@
         </div>
         <button class="slider-btn next" onclick="moveSlide(1)" aria-label="Next Review">&#10095;</button>
         
-        <!-- Option 2: Expandable Review Submission Form -->
+        <!-- Enhanced Action Button to Make Submission Pop -->
         <div>
-            <span class="toggle-review-btn" onclick="toggleReviewForm()">Submit Your Success Story</span>
+            <div class="toggle-review-btn" onclick="toggleReviewForm()">Submit Your Success Story</div>
         </div>
 
         <div id="review-form-container" class="review-form-container">
@@ -266,10 +267,10 @@
                 <input type="hidden" name="_subject" value="New Website Testimonial Submission!">
                 
                 <label>Your Name</label>
-                <input type="text" name="client_name" required placeholder="e.g., Alex H.">
+                <input type="text" name="client_name" required placeholder="e.g., Stephen K.">
                 
                 <label>Your Sport / Discipline</label>
-                <input type="text" name="client_sport" required placeholder="e.g., Bouldering, Trail Running">
+                <input type="text" name="client_sport" required placeholder="e.g., Bouldering, Trail Running, Cycling">
                 
                 <label>Your Experience / Review</label>
                 <textarea name="client_testimonial" rows="4" required placeholder="How did Pulse PT help your project?"></textarea>
