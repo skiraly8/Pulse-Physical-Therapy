@@ -65,7 +65,8 @@
             align-items: center; 
         }
 
-        .about-me h2 { font-size: 2.5rem; text-transform: uppercase; font-weight: 900; margin-top: 0; }
+        .about-me h2 { font-size: 2.5rem; text-transform: uppercase; font-weight: 900; margin-top: 0; margin-bottom: 5px; }
+        .about-subtitle { font-size: 1.3rem; font-weight: 700; color: #555; margin-bottom: 25px; margin-top: 0; }
         .profile-img { width: 100%; max-width: 450px; height: auto; border-radius: 4px; border: 1px solid #ddd; }
         
         .services { padding: 100px 8%; position: relative; z-index: 2; background: #fff; }
@@ -91,15 +92,15 @@
         .price { font-weight: 900; color: var(--accent); display: block; font-size: 1.2rem; }
         .duration { font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: #bbb; margin-top: 5px; }
 
-        .testimonials { padding: 100px 8%; background: var(--dark); color: #fff; position: relative; overflow: hidden; z-index: 2; }
+        .testimonials { padding: 100px 8%; background: var(--dark); color: #fff; position: relative; overflow: hidden; z-index: 2; text-align: center; }
         .testimonials h2 { font-size: 2.5rem; text-transform: uppercase; font-weight: 900; text-align: center; margin-bottom: 40px; color: var(--accent); }
-        .slider-wrapper { overflow: hidden; width: 100%; }
+        .slider-wrapper { overflow: hidden; width: 100%; margin-bottom: 30px; }
         .slider-container { display: flex; transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
         .testimonial-item { min-width: 100%; padding: 0 15%; text-align: center; box-sizing: border-box; }
         .testimonial-text { font-size: 1.5rem; font-style: italic; margin-bottom: 20px; line-height: 1.4; color: #eee; }
         .testimonial-author { font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); }
 
-        .slider-btn { position: absolute; top: 55%; transform: translateY(-50%); background: rgba(255,255,255,0.05); color: white; border: none; padding: 20px; cursor: pointer; font-size: 2rem; transition: 0.3s; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10; opacity: 0; }
+        .slider-btn { position: absolute; top: 45%; transform: translateY(-50%); background: rgba(255,255,255,0.05); color: white; border: none; padding: 20px; cursor: pointer; font-size: 2rem; transition: 0.3s; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10; opacity: 0; }
         .testimonials:hover .slider-btn { opacity: 1; }
         .slider-btn:hover { background: var(--accent); color: var(--dark); }
         .prev { left: 5%; }
@@ -179,6 +180,7 @@
     <section id="about" class="about-me">
         <div>
             <h2>About Me</h2>
+            <h3 class="about-subtitle">Stephen Kiraly, PT, DPT</h3>
             <p>I am a Doctor of Physical Therapy with a strong interest in both orthopedic and sports rehabilitation, particularly with a focus on climbing injuries. I have a passion to get my patients back to doing what they love!</p>
             <p>I am a collaborator with The Climbing Doctor, where I help produce rehab and prehab content for the @theclimbingdoctor Instagram community. My work includes a featured article on hypermobility for the Climbing Doctor website and a guest appearance on his podcast, discussing specialized strategies for climbers.</p>
             <p>Based in Seattle, I focus on empowering athletes through specific loading protocols and movement education to ensure they don't just recover, but improve.</p>
@@ -244,6 +246,10 @@
             </div>
         </div>
         <button class="slider-btn next" onclick="moveSlide(1)" aria-label="Next Review">&#10095;</button>
+        
+        <div style="margin-top: 20px;">
+            <a href="#" target="_blank" class="btn-main" style="background: var(--accent); border: none;">Leave a Google Review</a>
+        </div>
     </section>
 
     <section id="faq" class="faq">
@@ -296,6 +302,14 @@
             <label>Full Name</label>
             <input type="text" name="name" required placeholder="Full Name">
             
+            <label>What are you interested in?</label>
+            <select name="interest" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Phone call">Phone call</option>
+                <option value="Evaluation">Evaluation</option>
+                <option value="Treatment">Treatment</option>
+            </select>
+            
             <label>Preferred Contact Method</label>
             <select name="contact_method" id="contact_method" required onchange="toggleContactFields()">
                 <option value="" disabled selected>Select an option</option>
@@ -316,6 +330,9 @@
             <label>Current Symptoms/Goals</label>
             <textarea name="symptoms" rows="4" required placeholder="What are you working through?"></textarea>
             
+            <label>What have you tried?</label>
+            <textarea name="past_treatments" rows="3" required placeholder="Rest, ice, other therapy, etc."></textarea>
+            
             <label>Session Preference</label>
             <select name="preference" required>
                 <option value="" disabled selected>Select an option</option>
@@ -330,7 +347,8 @@
 
     <footer>
         <div class="footer-info">
-            &copy; 2026 Pulse Physical Therapy | Stephen Kiraly, DPT <br>
+            <!-- Updated Name Credentials Below -->
+            &copy; 2026 Pulse Physical Therapy | Stephen Kiraly, PT, DPT<br>
             Seattle, Washington.
         </div>
         <div class="footer-social">
