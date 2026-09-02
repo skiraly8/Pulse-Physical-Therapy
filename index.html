@@ -382,12 +382,6 @@
             <label>Full Name</label>
             <input type="text" name="name" required placeholder="Full Name">
 
-            <label>Email Address</label>
-            <input type="email" name="_replyto" required placeholder="Email Address">
-
-            <label>Phone Number</label>
-            <input type="tel" name="phone" required placeholder="(555) 555-5555">
-            
             <label>What are you interested in?</label>
             <select name="interest" required>
                 <option value="" disabled selected>Select an option</option>
@@ -396,19 +390,22 @@
                 <option value="Treatment">Treatment — available after an evaluation</option>
                 <option value="Wellness">Wellness</option>
             </select>
-            
-            <label>Preferred Contact Method</label>
-            <select name="contact_method" id="contact_method" required>
-                <option value="" disabled selected>Select an option</option>
-                <option value="Email">Email</option>
-                <option value="Phone">Phone Call / Text</option>
-            </select>
 
-            <label>Current Symptoms/Goals</label>
-            <textarea name="symptoms" rows="4" required placeholder="What are you working through?"></textarea>
-            
-            <label>What have you tried?</label>
-            <textarea name="past_treatments" rows="3" required placeholder="Rest, ice, other therapy, etc."></textarea>
+            <label>Chief Complaint</label>
+            <textarea name="chief_complaint" rows="4" required placeholder="What are you working through, what makes it worse, what makes it better?"></textarea>
+
+            <label>Approximate Date of Onset</label>
+            <input type="text" name="date_of_onset" required placeholder="For example: August 15, 2026 or about three months ago">
+
+            <label>Goals</label>
+            <textarea name="goals" rows="3" required placeholder="What would you like to get back to doing?"></textarea>
+
+            <label>Session Preference</label>
+            <select name="preference" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Online / Remote">Online / Remote</option>
+                <option value="In person — location coordinated after inquiry">In person — location coordinated after inquiry</option>
+            </select>
 
             <fieldset class="choice-group">
                 <legend>What days are you available? Select all that apply.</legend>
@@ -434,14 +431,20 @@
 
             <label>Specific Times or Availability Range (Optional)</label>
             <textarea name="availability_details" rows="2" placeholder="For example: Tuesday after 5 PM or Saturday from 9 AM–1 PM"></textarea>
-            
-            <label>Session Preference</label>
-            <select name="preference" required>
+
+            <label>Email Address</label>
+            <input type="email" name="_replyto" required placeholder="Email Address">
+
+            <label>Phone Number</label>
+            <input type="tel" name="phone" required placeholder="(555) 555-5555">
+
+            <label>Preferred Contact Method</label>
+            <select name="contact_method" id="contact_method" required>
                 <option value="" disabled selected>Select an option</option>
-                <option value="Online / Remote">Online / Remote</option>
-                <option value="In person — location coordinated after inquiry">In person — location coordinated after inquiry</option>
+                <option value="Email">Email</option>
+                <option value="Phone">Phone Call / Text</option>
             </select>
-            
+
             <button type="submit" class="btn-main" style="width: 100%;">Send Inquiry</button>
         </form>
     </section>
